@@ -1,41 +1,80 @@
+/*
+ * UCF COP3330 Fall 2021 Assignment 3 Solutions
+ * Copyright 2021 Jonathan O'Leary
+ */
 package baseline;
-
-//intasswordValidator(String Password){
-
-    // CHECK FOR # OF CHARACTERS IN THE PASSWORD STRING
-
-    // IF CHAR<8
-        //IF ALL NUMBERS
-            //RETURN 1
-        //IF ALL LETTERS
-            //RETURN 2
-
-    // IF CHAR>8
-        // IF THERE IS A MIX OF NUM AND LETTERS
-            //RETURN 3
-
-        //ELSE IF LETTERS NUM AND SPECIAL CHAR
-            //RETURN 4
-
-        //ELSE
-            //RETURN 2
-//}
-
-
-
-
+import java.util.Scanner;
 
 public class Solution25 {
-    //PROMPT FOR PASSWORD
+    static int passwordValidator(String password)
+    {
 
-    //INT STRENGTH = passwordValidator
+        int numbers=0, letters=0, characters=0, passwordLength;
+        passwordLength = password.length();
 
-    // IF 1
-        //VERY WEAK
-    // IF 2
-        //WEAK
-    // IF 3
-        //STRONG
-    // IF 4
-        //VERY STRONG
+        for (int i=0; i<passwordLength; i++){
+            if (Character.isLetter(password.charAt(i)))
+            {
+                letters++;
+            }
+            else if (Character.isDigit(password.charAt(i))){
+                numbers++;
+            }
+            else
+            {
+                characters++;
+            }
+        }
+        if (passwordLength<8)
+        {
+            if (numbers==passwordLength)
+            {
+                return 1;
+            }
+            if (letters==passwordLength)
+            {
+                return 2;
+            }
+        }
+
+        else if (passwordLength>8)
+        {
+            if ((letters<passwordLength) && (numbers<passwordLength))
+            {
+                return 3;
+            }
+            if ((letters<=passwordLength) && (numbers<=passwordLength) && (characters>0))
+            {
+                return 4;
+            }
+        }
+        return 0;
+    }
+    public static void main(String[] args)
+    {
+        Scanner scanR = new Scanner(System.in);
+        String passcode;
+        int strength;
+
+        System.out.println("Enter your Password for judgment");
+        passcode = scanR.nextLine();
+
+        strength = passwordValidator(passcode);
+
+        if (strength==1){
+            System.out.println("VERY WEAK PASSWORD");
+        }
+        else if(strength==2){
+            System.out.println("WEAK PASSWORD");
+        }
+        else if(strength==3){
+            System.out.println("KINDA STRONG PASSWORD");
+        }
+        else if(strength==4){
+            System.out.println("VERY STRONG PASSWORD");
+        }
+        else {
+            System.out.println("THERE HAS BEEN AN ERROR");
+        }
+    }
 }
