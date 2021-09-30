@@ -8,11 +8,8 @@ package baseline;
 
 class Solution26 {
     public static void main(String[] args) {
-        // int months
-        //PaymentCalculator PaymentCalculatorObject = new PaymentCalculator();
-        //
-        // int months = PaymentCalculator class with a public method called calculateMonthsUntilPaidOf
-        //
-        // - result string display
+        PaymentCalculator PaymentCalculatorObject = new PaymentCalculator();
+        double months = PaymentCalculator.calculateMonthsUntilPaidOff();
+        System.out.println("It will take you "+ Math.round(months)+ " months to pay off this card");
     }
 }

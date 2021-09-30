@@ -6,14 +6,31 @@ package baseline;
 import java.util.Scanner;
 
 public class PaymentCalculator {
-    public int calculateMonthsUntilPaidOff(){
-        // - prompt balance
-        //
-        // - prompt APR and take as a PERCENT
-        //
-        // - prompt monthly payment
-        // - make the fractions of a cent are rounded up
-        // - calculate months
-        //return months
+    public static double calculateMonthsUntilPaidOff(){
+        Scanner scanR = new Scanner(System.in);
+
+        System.out.println("What is your balance?");
+        double balance = scanR.nextDouble();
+
+        System.out.println("What is the APR on your card (as a percent)?");
+        double APR = scanR.nextDouble();
+        APR = (APR/365);
+
+        System.out.println("What is the monthly payment you can make?");
+        double MonthlyPayment = scanR.nextDouble();
+
+        double months, power;
+
+        power = Math.pow((1+APR),30);
+
+        months = -(1) * (Math.log(1+((balance*(1-power))/MonthlyPayment)));
+
+        months = months/30;
+        months = months / (Math.log(1+APR));
+        months = -(months);
+
+
+        //System.out.println(months);
+        return months;
     }
 }
