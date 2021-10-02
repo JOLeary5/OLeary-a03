@@ -8,25 +8,41 @@ import java.util.Scanner;
 
 public class Solution38 {
 
-        //String filterEvenNumbers(){
-        // if ( (EVEN%2)!= 0) {
-        //      - store in string array value to another even array
-        // return newString;
+    public static Integer[] filterEvenNumbers(String[] userArray){
+        ArrayList<Integer> evenList = new ArrayList<>();
+        for (int i=0; i<userArray.length; i++){
+            int num = Integer.parseInt(userArray[i]);
+            if ((num % 2)==0){
+                evenList.add(num);
+            }
+        }
+        Integer[] evenArray = new Integer[evenList.size()];
+        evenArray = evenList.toArray(evenArray);
+
+        return evenArray;
+    }
 
 
     public static void main(String[] args) {
 
-        //initialize scanner
-        //prompt user to enter a list of numbers separated by spaces
-        //String user = String
-        //
-        //
-        //Convert string to array since apparently a lot of languages can do that
-        //
-        // String evenString = FUNCTION filterEvenNumbers();
-        //
-        // display evenString();
-        //
+        Scanner scanR = new Scanner(System.in);
 
+        System.out.println("Enter a list of numbers, separated by spaces: ");
+        String userInput = scanR.nextLine();
+
+        String userArray[] = userInput.split(" ");
+
+        Integer evenArray[] = filterEvenNumbers(userArray);
+
+        System.out.println("The even numbers are");
+        for (int i=0; i<evenArray.length ; i++){
+            if (i < evenArray.length-1){
+                System.out.print(evenArray[i]+" ");
+            }
+            else {
+                System.out.print(evenArray[i]+".");
+            }
+        }
+        System.out.println("\n");
     }
 }
