@@ -4,22 +4,28 @@
  */
 package baseline;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class Solution39 {
     public static void main(String[] args) {
-        //
-        // - Establish the  Structure DataArray
-        //      - add employee 1 (POSITION)(SEPARATION DATE)
-        //      - add employee 2 (POSITION)(SEPARATION DATE)
-        //      - add employee 3 (POSITION)(SEPARATION DATE)
-        //      - add employee 4 (POSITION)(SEPARATION DATE)
-        //      - add employee 5 (POSITION)(SEPARATION DATE)
-        //
-        //
-        // - Sort the Array by Last-Name
-        // - (THE FORMATTED TABLE)
-        //      - sout ( NAME   |    POSITION|      SEPARATION DATE
-        //      -  FOR (ArrayLength)
-        //      -       ( EMPLOYEE NAME)| (EMPLOYEE POSITION) | (SEPARATION DATE)
+        List<Employee> employeeList = new ArrayList<>();
+        employeeList.add(new Employee("John", "Johnson", "Manager", "2016-12-31"));
+        employeeList.add(new Employee("Tou", "Xiong", "Software Engineer", "2016-10-05"));
+        employeeList.add(new Employee("Michaela", "Michaelson", "District Manager", "2015-12-19"));
+        employeeList.add(new Employee("Jake", "Jacobson", "Programmer", ""));
+        employeeList.add(new Employee("Jacquelyn", "Jackson", "DBA", ""));
+        employeeList.add(new Employee("Sally", "Webber", "Web Developer", "2015-12-18"));
 
+        Collections.sort(employeeList, new LastNameSort());
+
+        System.out.println("Name" + "                 |  " + "Position            |");
+        System.out.println("---------------------|----------------------|");
+
+        for (Employee emp : employeeList) {
+            System.out.format("%2s %7s\t| %4s", emp.getFirstName(), emp.getLastName(), emp.getPosition());
+            System.out.println();
+        }
     }
 }
