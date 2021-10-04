@@ -23,14 +23,56 @@ public class Solution31 {
         }
     }
     public static void main(String[] args) {
-        Scanner scanR = new Scanner(System.in);
+        int age=0;
+        int restingHeart=0;
+        Scanner sc=new Scanner(System.in);
+        boolean flag=false;
+        while(true)
+        {
+            try
+            {
+                System.out.print("What is your age? "); //ask interest rate
+                age =Integer.parseInt(sc.next()); //read r
+                flag=true; //if exception not raised,set flag to true
+            }
+            catch(NumberFormatException e) //catch invalid number exception
+            {
+                System.out.println("Sorry. That's not a valid input");
+            }
+            catch(ArithmeticException e) //catch division by error exception
+            {
+                System.out.println("Sorry. That's not a valid input");
+            }
+            if(flag) //if exception not raised
+            {
+                break;
+            }
 
-        System.out.println("Please enter your age");
-        int age = scanR.nextInt();
-        System.out.println("Please enter your resting heartRate");
-        int restingHeartRate = scanR.nextInt();
+        }
+        while(true)
+        {
+            try
+            {
+                System.out.print("What is your resting heart rate? "); //ask interest rate
+                restingHeart =Integer.parseInt(sc.next()); //read r
+                flag=true; //if exception not raised,set flag to true
+            }
+            catch(NumberFormatException e) //catch invalid number exception
+            {
+                System.out.println("Sorry. That's not a valid input");
+            }
+            catch(ArithmeticException e) //catch division by error exception
+            {
+                System.out.println("Sorry. That's not a valid input");
+            }
+            if(flag) //if exception not raised
+            {
+                break;
+            }
 
-        PrintChart(age, restingHeartRate);
+        }
+        PrintChart(age, restingHeart);
+
 
     }
 }
